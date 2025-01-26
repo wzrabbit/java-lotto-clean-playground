@@ -33,7 +33,7 @@ public class LottoList {
         return new LottoPrizeResult(lottoPrizesCount);
     }
 
-    int getLottoPrizeIndex(Lotto lotto, WinningLottoInfo winningLottoInfo) {
+    private int getLottoPrizeIndex(Lotto lotto, WinningLottoInfo winningLottoInfo) {
         Set<Integer> lottoNumbers = new HashSet<>(lotto.getValue());
 
         int matchCount = (int) winningLottoInfo.getLottoValue().stream().filter(lottoNumbers::contains).count();
