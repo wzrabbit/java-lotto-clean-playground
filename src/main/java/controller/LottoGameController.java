@@ -10,8 +10,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Collectors;
 
 public class LottoGameController {
-    private final LottoRandomNumberGenerator lottoRandomNumberGenerator = new LottoRandomNumberGenerator();
-    private final LottoGenerator lottoGenerator = new LottoGenerator(lottoRandomNumberGenerator);
+    private final LottoGenerator lottoGenerator = new LottoGenerator();
     private LottoPurchasePrice lottoPurchasePrice;
     private int lottoCount;
     private int manualLottoCount;
@@ -79,7 +78,7 @@ public class LottoGameController {
         concatedLottoList.addAll(autoLottoList);
 
         lottoList = new LottoList(concatedLottoList);
-        OutputView.printLottoPurchases(lottoList);
+        OutputView.printLottoPurchases(lottoList, manualLottoCount, autoLottoCount);
     }
 
     private void inputWinningLottoInfo() {

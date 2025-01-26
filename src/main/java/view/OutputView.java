@@ -7,8 +7,8 @@ import model.LottoPrizeResult;
 import java.util.List;
 
 public class OutputView {
-    public static void printLottoPurchases(LottoList lottoList) {
-        System.out.println("\n" + lottoList.size() + "개를 구매했습니다.");
+    public static void printLottoPurchases(LottoList lottoList, int manualLottoCount, int autoLottoCount) {
+        System.out.println("\n수동으로 " + manualLottoCount + "개, 자동으로 " + autoLottoCount + "개를 구매했습니다.");
         lottoList.getValue().forEach(lotto -> {
             System.out.println(lotto);
         });
