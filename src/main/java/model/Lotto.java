@@ -37,7 +37,7 @@ public class Lotto {
     }
 
     public List<Integer> getValue() {
-        return lotto;
+        return Collections.unmodifiableList(lotto);
     }
 
     @Override
