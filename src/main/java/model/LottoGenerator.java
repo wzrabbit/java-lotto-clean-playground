@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Random;
 
 public class LottoGenerator {
-    Random random = new Random();
+    final Random random = new Random();
 
     public Lotto generate() {
-        List<Integer> lottoNumbers = new ArrayList<>();
+        final List<Integer> lottoNumbers = new ArrayList<>();
 
         while (lottoNumbers.size() < LottoConstants.NUMBER_COUNT.getValue()) {
-            int candidateLottoNumber = random.nextInt(LottoConstants.MIN_NUMBER.getValue(),
+            final int candidateLottoNumber = random.nextInt(LottoConstants.MIN_NUMBER.getValue(),
                     LottoConstants.MAX_NUMBER.getValue());
 
             if (!lottoNumbers.contains(candidateLottoNumber)) {

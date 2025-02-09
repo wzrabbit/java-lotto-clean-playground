@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoList {
-    List<Lotto> lottoList;
+    private final List<Lotto> lottoList;
 
     public LottoList(List<Lotto> lottoList) {
         this.lottoList = new ArrayList<>(lottoList);
