@@ -1,10 +1,8 @@
 package view;
 
 import model.LottoList;
-import model.LottoPrizeConstants;
+import model.LottoPrize;
 import model.LottoPrizeResult;
-
-import java.util.List;
 
 public class OutputView {
     public static void printLottoPurchases(LottoList lottoList, int manualLottoCount, int autoLottoCount) {
@@ -19,17 +17,16 @@ public class OutputView {
     }
 
     public static void printLottoPrizeResult(LottoPrizeResult lottoPrizeResult) {
-        System.out.println("당첨 통계\n---------");
-        System.out.println("3개 일치 (" + LottoPrizeConstants.FIFTH_PRIZE_MONEY.getValue() + "원)- "
-                + lottoPrizeResult.getFifthPrizeCount() + "개");
-        System.out.println("4개 일치 (" + LottoPrizeConstants.FOURTH_PRIZE_MONEY.getValue() + "원)- "
-                + lottoPrizeResult.getFourthPrizeCount() + "개");
-        System.out.println("5개 일치 (" + LottoPrizeConstants.THIRD_PRIZE_MONEY.getValue() + "원)- "
-                + lottoPrizeResult.getThirdPrizeCount() + "개");
-        System.out.println("5개 일치, 보너스 볼 일치(" + LottoPrizeConstants.SECOND_PRIZE_MONEY.getValue() + "원)- "
-                + lottoPrizeResult.getSecondPrizeCount() + "개");
-        System.out.println("6개 일치 (" + LottoPrizeConstants.FIRST_PRIZE_MONEY.getValue() + "원)- "
-                + lottoPrizeResult.getFirstPrizeCount() + "개");
-        System.out.println("총 수익률은 " + lottoPrizeResult.getProfitRate() + "입니다.");
+        System.out.println("\n당첨 통계\n---------");
+
+        lottoPrizeResult.getValue().forEach((key, value) -> {
+            if (key == LottoPrize.SECOND) {
+                System.out.printf("%d개 일치, 보너스 볼 일치(%d원)- %d개\n", key.getMatchNumberCount(), key.getMoney(), value);
+            } else {
+                System.out.printf("%d개 일치 (%d원)- %d개\n", key.getMatchNumberCount(), key.getMoney(), value);
+            }
+        });
+
+        System.out.printf("총 수익률은 %.2f입니다.", lottoPrizeResult.getProfitRate());
     }
 }
