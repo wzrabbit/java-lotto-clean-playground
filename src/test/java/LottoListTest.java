@@ -53,18 +53,16 @@ public class LottoListTest {
             WinningLottoInfo winningLottoInfo = new WinningLottoInfo(winningLotto, bonusNumber);
 
             LottoPrizeResult lottoPrizeResult = lottoList.getLottoResultByWinningLottoInfo(winningLottoInfo);
-            List<Integer> prizeCounts = Arrays.asList(
-                    lottoPrizeResult.getFirstPrizeCount(),
-                    lottoPrizeResult.getSecondPrizeCount(),
-                    lottoPrizeResult.getThirdPrizeCount(),
-                    lottoPrizeResult.getFourthPrizeCount(),
-                    lottoPrizeResult.getFifthPrizeCount()
-            );
+            List<Integer> prizeCounts = new ArrayList<>();
+
+            lottoPrizeResult.getValue().forEach((key, value) -> {
+                prizeCounts.add(value);
+            });
+
             double profitRate = lottoPrizeResult.getProfitRate();
 
-            assertThat(prizeCounts).isEqualTo(Arrays.asList(1, 1, 1, 1, 2));
+            assertThat(prizeCounts).isEqualTo(Arrays.asList(2, 1, 1, 1, 1));
             assertThat(profitRate).isCloseTo(290222.85714285716, within(0.000001));
         }
     }
-
 }
